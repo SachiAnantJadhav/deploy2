@@ -49,60 +49,66 @@
 
 
 // app/pages/HotelPage.jsx or app/page.tsx if you're using Next.js with App Router
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React from "react";
 
-const hotels = [
-  {
-    name: "The Grand Royal",
-    location: "Mumbai, India",
-    price: "₹5,500/night",
-    image: "https://source.unsplash.com/featured/?hotel",
-  },
-  {
-    name: "Ocean Breeze Resort",
-    location: "Goa, India",
-    price: "₹4,200/night",
-    image: "https://source.unsplash.com/featured/?resort",
-  },
-  {
-    name: "Mountain View Stay",
-    location: "Manali, India",
-    price: "₹3,800/night",
-    image: "https://source.unsplash.com/featured/?mountain,hotel",
-  },
-];
+function App() {
+  const hotels = [
+    {
+      name: "The Grand Royal",
+      location: "Mumbai, India",
+      price: "₹5,500/night",
+      image: "https://source.unsplash.com/featured/?hotel",
+    },
+    {
+      name: "Ocean Breeze Resort",
+      location: "Goa, India",
+      price: "₹4,200/night",
+      image: "https://source.unsplash.com/featured/?resort",
+    },
+    {
+      name: "Mountain View Stay",
+      location: "Manali, India",
+      price: "₹3,800/night",
+      image: "https://source.unsplash.com/featured/?mountain,hotel",
+    },
+  ];
 
-export default function HotelPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">HotelStay</h1>
-        <Button>Login</Button>
+    <div className="font-sans bg-gray-50 min-h-screen">
+      {/* Header */}
+      <header className="bg-blue-600 text-white p-4 text-center text-2xl font-bold">
+        Hotel Booking
       </header>
 
-      <section className="bg-blue-100 py-12 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Find your perfect stay</h2>
-        <p className="text-gray-600">Explore top-rated hotels and resorts in India</p>
+      {/* Hero Section */}
+      <section className="bg-blue-100 py-10 text-center">
+        <h2 className="text-3xl font-semibold mb-2">Find Your Dream Stay</h2>
+        <p className="text-gray-600">Explore top hotels across India</p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 p-8">
+      {/* Hotel Listings */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
         {hotels.map((hotel, index) => (
-          <Card key={index} className="shadow-md rounded-2xl">
-            <img src={hotel.image} alt={hotel.name} className="rounded-t-2xl h-48 w-full object-cover" />
-            <CardContent className="space-y-2 p-4">
-              <h3 className="text-xl font-semibold">{hotel.name}</h3>
-              <p className="text-sm text-gray-500">{hotel.location}</p>
-              <p className="text-lg font-medium text-green-600">{hotel.price}</p>
-              <Button className="w-full">Book Now</Button>
-            </CardContent>
-          </Card>
+          <div key={index} className="bg-white shadow-md rounded-xl overflow-hidden">
+            <img src={hotel.image} alt={hotel.name} className="h-48 w-full object-cover" />
+            <div className="p-4">
+              <h3 className="text-xl font-bold">{hotel.name}</h3>
+              <p className="text-gray-600">{hotel.location}</p>
+              <p className="text-green-600 font-semibold">{hotel.price}</p>
+              <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+                Book Now
+              </button>
+            </div>
+          </div>
         ))}
       </section>
 
-      <footer className="bg-white text-center py-4 text-sm text-gray-500 border-t">
+      {/* Footer */}
+      <footer className="text-center text-sm text-gray-500 py-4 border-t">
         © 2025 HotelStay. All rights reserved.
       </footer>
     </div>
   );
 }
+
+export default App;
